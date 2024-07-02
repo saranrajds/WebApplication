@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
+		style="width: 25%; max-height: auto; min-height: 100vh"
+		th:fragment="sidebar">
+		<a href="/"
+			class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+			<svg class="bi me-2" width="40" height="32">
+				<use xlink:href="#bootstrap"></use></svg> <span class="fs-4">Blood Donor</span>
+		</a>
+		<hr>
+
+		<ul class="nav nav-pills flex-column mb-auto">
+			<li><a th:href="@{/home?fragmentToLoad=dashboard}"
+				class="nav-link text-white"> <svg class="bi me-2" width="16"
+						height="16">
+						<use xlink:href="#speedometer2"></use></svg> Dashboard
+			</a></li>
+			<li th:if="${session.role=='admin'}"><a
+				th:href="@{/home?fragmentToLoad=donor}" class="nav-link text-white">
+					<svg class="bi me-2" width="16" height="16">
+						<use xlink:href="#grid"></use></svg> Donor Details
+			</a></li>
+			<li th:if="${session.role=='admin'}"><a
+				th:href="@{/home?fragmentToLoad=patient}" class="nav-link text-white">
+					<svg class="bi me-2" width="16" height="16">
+						<use xlink:href="#grid"></use></svg> Patient Details
+			</a></li>
+			<li th:if="${session.role=='patient'}"><a
+					th:href="@{/home?fragmentToLoad=patient}" class="nav-link text-white">
+				<svg class="bi me-2" width="16" height="16">
+					<use xlink:href="#grid"></use></svg> Send Request
+			</a></li>
+			<li th:if="${session.role=='donor'}"><a th:href="@{/home?fragmentToLoad=bloodRequest}"
+				class="nav-link text-white"> <svg class="bi me-2" width="16"
+						height="16">
+						<use xlink:href="#table"></use></svg> Blood Request
+			</a></li>
+			<li><a
+				th:href="@{/home?fragmentToLoad=report}" class="nav-link text-white">
+					<svg class="bi me-2" width="16" height="16">
+						<use xlink:href="#grid"></use></svg> report
+			</a></li>
+		</ul>
+		<hr>
+		<div class="dropdown">
+			<a href="#"
+				class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+				id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+				<img src="avatar.png" alt="" width="32" height="32"
+				class="rounded-circle me-2" id="image"> <strong th:text="${session.username}"></strong>
+			</a>
+			<ul class="dropdown-menu dropdown-menu-dark text-small shadow"
+				aria-labelledby="dropdownUser1">
+				<li><a  th:href="@{/getValue}" class="dropdown-item">Profile</a></li>
+				<li><hr class="dropdown-divider"></li>
+				<li><a class="dropdown-item" href="#">Sign out</a></li>
+			</ul>
+		</div>
+	</div>
+	<script>
+	var imageURL = localStorage.getItem('image');
+	document.getElementById('image').src = imageURL;
+	
+	</script>
+</body>
+</html>

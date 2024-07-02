@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body >
+
+	<div class="container " th:fragment="donor">
+
+		<div class="column">
+			<h3>Find Blood Donor</h3>
+<!--			<form id="findBloodDonorForm" action="onfindBloodDonor" method="POST">-->
+				<div class="form-group">
+					<label for="bloodGroup" class="control-label">Blood Group</label>
+					<select class="form-select" id="bloodGroup" name="bloodGroupId" required>
+						<option value="" selected>--Select--</option>
+						<option th:if="${bloodGroup != null}"
+								th:each="bloodGroup : ${bloodGroups}"
+								th:value="${bloodGroup.id}"
+								th:text="${bloodGroup.name}"
+								th:selected="${SearchCriteria.bloodGroupId != '' && SearchCriteria.bloodGroupId == bloodGroup.id}"
+						></option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="bloodGroup" class="control-label">Select Country</label>
+					<select class="form-select" id="coutryDrpDnw" name="countryId" required>
+						<option value="" selected>--Select--</option>
+						<option th:if="${countries != null}" th:each="countries : ${countries}"
+								th:value="${countries.id}"
+								th:text="${countries.name}"
+								th:selected="${SearchCriteria.countryId != '' && SearchCriteria.countryId == countries.id}"
+						></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="hidden" name="state" th:if="${SearchCriteria.stateId != -1}" th:value="${SearchCriteria.countryId}">
+					<label for="statedrpdwn" class="control-label">Select State</label>
+					<select class="form-select" id="statedrpdwn" name="stateId">
+						<!--                    <option value="-1" selected>&#45;&#45;Select&#45;&#45;</option>-->
+						<!--                    <option th:if="${state != null}" th:each="state : ${states}"-->
+						<!--                            th:value="${state.id}"-->
+						<!--                            th:text="${state.name}"></option>-->
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="hidden" name="state" th:if="${SearchCriteria.districtId != -1}" th:value="${SearchCriteria.districtId}">
+					<label for="districtdrpdwn" class="control-label">Select Distric</label>
+					<select class="form-select" id="districtdrpdwn" name="districtId">
+						<!--                    <option value="-1" selected>&#45;&#45;Select&#45;&#45;</option>-->
+						<!--                    <option th:if="${district != null}" th:each="district : ${districts}"-->
+						<!--                            th:value="${district.id}"-->
+						<!--                            th:text="${district.name}"></option>-->
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="hidden" name="state" th:if="${SearchCriteria.cityId != -1}" th:value="${SearchCriteria.cityId}">
+					<label for="citydrpdwn" class="control-label">Select City</label>
+					<select class="form-select" id="citydrpdwn" name="citydrpdwn">
+						<!--                    <option value="-1" selected>&#45;&#45;Select&#45;&#45;</option>-->
+						<!--                    <option th:if="${citie != null}" th:each="citie : ${cities}"-->
+						<!--                            th:value="${citie.id}"-->
+						<!--                            th:text="${citie.name}"></option>-->
+					</select>
+				</div>
+				<div class ="findBloodDonor">
+<!--					<input type="submit" value="Find" class="btn btn-primary btn-block">-->
+					<button class="btn onFindBloodDonor" onclick="onFindBloodDonor()">Find</button>
+				</div>
+<!--			</form>-->
+		</div>
+
+		<hr>
+		<h4>Donor Information</h4>
+		<hr>
+	
+		<div class="row" style="width: 72vw">
+			<div class="col-12">
+				<div class="data_table">
+					<table id="usersTable" class="table table-striped table-bordered">
+						<thead class="table-dark">
+							<tr>
+								<th>Name</th>
+								<th>Mobile No</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="user : ${users}">
+								<td th:text="${user.username}"></td>
+								<td th:text="${user.mobileNo}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/js/jquery.js"></script>
+<script src="/js/main.js"></script>
+</html>

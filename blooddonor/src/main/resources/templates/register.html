@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register Page</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+<!--	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
+	<style>
+		.card {
+			margin: 20px;
+			border-radius: 10px;
+		}
+		.form-group label {
+			font-weight: bold;
+		}
+		.btn-custom {
+			background-color: #007bff;
+			color: white;
+		}
+		.btn-custom:hover {
+			background-color: #0056b3;
+		}
+	</style>
+</head>
+<body th:fragment="donor-register">
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header text-center">
+					<h2>Donor Register</h2>
+				</div>
+				<div class="card-body">
+					<form th:action="@{/addUser}" method="post">
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="email" class="form-control" id="email" name="email" placeholder="Enter Email.." required>
+						</div>
+						<div class="form-group">
+							<label for="mobileNo">Mobile No</label>
+							<input type="text" class="form-control" id="mobileNo" name="mobileNo" placeholder="Enter Mobile No.." required>
+						</div>
+						<div class="form-group">
+							<label for="bloodGroup" class="control-label">Blood Group</label>
+							<select class="form-select" aria-label="Default select example" id="bloodGroup" name="bloodGroup" required>
+								<option value="" selected>--Select--</option>
+								<option th:if="${bloodGroup != null}" th:each="bloodGroup : ${bloodGroups}"
+										th:value="${bloodGroup.id}"
+										th:text="${bloodGroup.name}"></option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="bloodGroup" class="control-label">Select Country</label>
+							<select class="form-select" aria-label="Default select example" id="coutryDrpDnw" name="country" required>
+								<option value="" selected>--Select--</option>
+								<option th:if="${countries != null}" th:each="countries : ${countries}"
+										th:value="${countries.id}"
+										th:text="${countries.name}"></option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="statedrpdwn" class="control-label">Select State</label>
+							<select class="form-select" aria-label="Default select example" id="statedrpdwn" name="statedrpdwn">
+								<!--                    <option value="-1" selected>&#45;&#45;Select&#45;&#45;</option>-->
+								<!--                    <option th:if="${state != null}" th:each="state : ${states}"-->
+								<!--                            th:value="${state.id}"-->
+								<!--                            th:text="${state.name}"></option>-->
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="districtdrpdwn" class="control-label">Select District</label>
+							<select class="form-select" aria-label="Default select example" id="districtdrpdwn" name="districtdrpdwn">
+								<!--                    <option value="-1" selected>&#45;&#45;Select&#45;&#45;</option>-->
+								<!--                    <option th:if="${district != null}" th:each="district : ${districts}"-->
+								<!--                            th:value="${district.id}"-->
+								<!--                            th:text="${district.name}"></option>-->
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="citydrpdwn" class="control-label">Select City</label>
+							<select class="form-select" aria-label="Default select example" id="citydrpdwn" name="citydrpdwn">
+								<!--                    <option value="-1" selected>&#45;&#45;Select&#45;&#45;</option>-->
+								<!--                    <option th:if="${citie != null}" th:each="citie : ${cities}"-->
+								<!--                            th:value="${citie.id}"-->
+								<!--                            th:text="${citie.name}"></option>-->
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input th:object="${credentialDTO}" type="password" class="form-control" id="password" name="password" placeholder="Enter Password.." required>
+						</div>
+						<div class="form-group">
+							<label for="confirmPassword">Confirm Password</label>
+							<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Please Re-enter Password.." required>
+						</div>
+						<button type="submit" class="mt-2 btn btn-primary btn-custom btn-block">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="/js/jquery.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

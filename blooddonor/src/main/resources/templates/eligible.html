@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="eligible">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .button-9 {
+        appearance: button;
+        backface-visibility: hidden;
+        background-color: #405cf5;
+        border-radius: 6px;
+        border-width: 0;
+        box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .1) 0
+            2px 5px 0, rgba(0, 0, 0, .07) 0 1px 1px 0;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        font-family: -apple-system, system-ui, "Segoe UI", Roboto,
+            "Helvetica Neue", Ubuntu, sans-serif;
+        font-size: 100%;
+        height: 44px;
+        line-height: 1.15;
+        margin: 12px 0 0;
+        outline: none;
+        overflow: hidden;
+        padding: 0 25px;
+        position: relative;
+        text-align: center;
+        text-transform: none;
+        transform: translateZ(0);
+        transition: all .2s, box-shadow .08s ease-in;
+        user-select: none;
+        touch-action: manipulation;
+        float
+    }
+
+    .button-9:disabled {
+        cursor: default;
+    }
+
+    .button-9:focus {
+        box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0
+            6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0
+            0 4px;
+    }
+
+</style>
+<body>
+<div class="modal fade" id="model-eligible" data-bs-backdrop="static"
+     data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Eligibility Criteria</h5>
+            </div>
+            <div class="modal-body">
+                <p id="error" style="color:red"></p>
+                <form action="/eligibleDonor" id="employeeForm" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="weight" class="control-label">Is Your Weight less than 50kg? </label>
+                            <select
+                                    class="form-select" aria-label="Default select example"
+                                    id="weight" name="isWeight">
+                                <option value="select" selected>--Select--</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="disease" class="control-label">Are You Suffering from any transmittable
+                                disease? </label> <select
+                                class="form-select" aria-label="Default select example"
+                                id="disease" name="isTransmittableDisease">
+                            <option value="select" selected>--Select--</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="suffer" class="control-label">Are You Suffering from any of the below? </label>
+                            <select
+                                    class="form-select" aria-label="Default select example"
+                                    id="suffer" name="disease">
+                                <option value="select" selected>--Select--</option>
+                                <option value="diabetes">Diabetes</option>
+                                <option value="cancer">Cancer</option>
+                                <option value="pressure">Blood Pressure</option>
+                                <option value="no-other">No other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="asthama" class="control-label">Are you Asthama patient? </label> <select
+                                class="form-select" aria-label="Default select example"
+                                id="asthama" name="isAsthama">
+                            <option value="select" selected>--Select--</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" id="addEligible" class="button-9" disabled>Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous">
+
+</script>
+</body>
+</html>

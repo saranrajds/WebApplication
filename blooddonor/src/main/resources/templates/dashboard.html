@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body th:fragment="dashboard">
+	<div class="container mt-3" >
+		<div class="row" th:if="${session.role=='admin'}">
+			<div class="col-md-4 col-xl-3">
+				<div class="card bg-c-blue order-card">
+					<div class="card-block">
+						<h6 class="m-b-20">Total Donor</h6>
+						<h2 class="text-right">
+							<i class="fa fa-tasks "></i> <span> 486 </span>
+						</h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-xl-3">
+				<div class="card bg-c-green order-card">
+					<div class="card-block">
+						<h6 class="m-b-20">Total Patient</h6>
+						<h2 class="text-right">
+							<i class="fa fa-user"></i> <span> 486 </span>
+						</h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-xl-3">
+				<div class="card bg-c-green order-card">
+					<div class="card-block">
+						<h6 class="m-b-20">Total Request</h6>
+						<h2 class="text-right">
+							<i class="fa fa-user"></i> <span> 486 </span>
+						</h2>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-4 col-xl-3">
+				<div class="card bg-c-yellow order-card">
+					<div class="card-block">
+						<h6 class="m-b-20">Pending Request</h6>
+						<h2 class="text-right">
+							<i class="fa fa-list-alt"></i> <span> 486 </span>
+						</h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-xl-3">
+				<div class="card bg-c-yellow order-card">
+					<div class="card-block">
+						<h6 class="m-b-20">Approval Request</h6>
+						<h2 class="text-right">
+							<i class="fa fa-spinner"></i> <span> 486 </span>
+						</h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-xl-3">
+				<div class="card bg-c-pink order-card">
+					<div class="card-block">
+						<h6 class="m-b-20">Rejected Request</h6>
+						<h2 class="text-right">
+							<i class="fa  fa-exclamation"></i> <span> 486 </span>
+						</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="row" th:if="${session.role=='donor'}">
+		<div class="col-md-4 col-xl-4">
+			<div class="card bg-c-yellow order-card">
+				<div class="card-block">
+					<h6 class="m-b-20">Accepted Request</h6>
+					<h2 class="text-right">
+						<i class="fa fa-spinner"></i> <span> 486 </span>
+					</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

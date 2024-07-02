@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="main">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet"  href="/css/main.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="column">
+            <h3>Find Blood Donor</h3>
+            <form id="findBloodDonorForm" action="onfindBloodDonor" method="POST">
+                <div class="form-group">
+                    <label for="bloodGroup" class="control-label">Blood Group</label>
+                    <select class="form-select" id="bloodGroup" name="bloodGroupId" required>
+                        <option value="" selected>--Select--</option>
+                        <option th:if="${bloodGroup != null}" th:each="bloodGroup : ${bloodGroups}"
+                                th:value="${bloodGroup.id}"
+                                th:text="${bloodGroup.name}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bloodGroup" class="control-label">Select Country</label>
+                    <select class="form-select" id="coutryDrpDnw" name="countryId" required>
+                        <option value="" selected>--Select--</option>
+                        <option th:if="${countries != null}" th:each="countries : ${countries}"
+                                th:value="${countries.id}"
+                                th:text="${countries.name}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="statedrpdwn" class="control-label">Select State</label>
+                    <select class="form-select" id="statedrpdwn" name="stateId">
+    <!--                    <option value="-1" selected>&#45;&#45;Select&#45;&#45;</option>-->
+    <!--                    <option th:if="${state != null}" th:each="state : ${states}"-->
+    <!--                            th:value="${state.id}"-->
+    <!--                            th:text="${state.name}"></option>-->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="districtdrpdwn" class="control-label">Select Distric</label>
+                    <select class="form-select" id="districtdrpdwn" name="districtId">
+    <!--                    <option value="-1" selected>&#45;&#45;Select&#45;&#45;</option>-->
+    <!--                    <option th:if="${district != null}" th:each="district : ${districts}"-->
+    <!--                            th:value="${district.id}"-->
+    <!--                            th:text="${district.name}"></option>-->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="citydrpdwn" class="control-label">Select City</label>
+                    <select class="form-select" id="citydrpdwn" name="cityId">
+    <!--                    <option value="-1" selected>&#45;&#45;Select&#45;&#45;</option>-->
+    <!--                    <option th:if="${citie != null}" th:each="citie : ${cities}"-->
+    <!--                            th:value="${citie.id}"-->
+    <!--                            th:text="${citie.name}"></option>-->
+                    </select>
+                </div>
+                <div class ="findBloodDonor">
+                    <input type="submit" value="Find" class="btn btn-primary btn-block">
+<!--                    <button class="btn onFindBloodDonor" onclick="onFindBloodDonor()">Find</button>-->
+                </div>
+            </form>
+        </div>
+        <div class="column">
+            <h2>Login</h2>
+            <form id="loginForm" action="login" method="post">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Enter Email" class="form-control" required>
+                    <div class="invalid-feedback">Please enter a valid email.</div>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Enter Password" class="form-control" required>
+                    <div class="invalid-feedback">Password is required.</div>
+                </div>
+                <input type="submit" value="Login" class="btn btn-primary btn-block">
+            </form>
+            <p class="mt-3">New to Donor?</p>
+            <a th:href="@{/bdonor?fragmentToLoad=register}">Create an account</a>
+        </div>
+    </div>
+</body>
+<script src="/js/jquery.js"></script>
+<script src="/js/main.js"></script>
+</html>

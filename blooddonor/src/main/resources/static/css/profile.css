@@ -1,0 +1,93 @@
+@charset "ISO-8859-1";
+
+.container {
+  background: #fff;
+  width: 900px;
+  height: 545px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 2%;
+  box-shadow: 2px 5px 20px rgba(119, 119, 119, 0.5);
+}
+.active {
+  color: #3fb6a8;
+}
+
+.rightbox {
+  float: right;
+  width: 60%;
+  height: 100%;
+}
+
+.profile {
+  position: relative;
+  width: 50%;
+  float:right;
+
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  font-size: 2em;
+  margin-top: 40px;
+  margin-bottom: 35px;
+}
+
+h2 {
+  color: #777;
+  font-family: "Roboto", sans-serif;
+  width: 80%;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-left: 2px;
+}
+
+.value {
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(to right, #3fb6a8, rgba(126, 211, 134, 0.5)) 1
+    0%;
+  border-top: 0;
+  width: 80%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.7em;
+  padding: 7px 0;
+  color: #070707;
+}
+
+.btn {
+  float: right;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-size: 10px;
+  border: none;
+  color: #3fb6a8;
+}
+
+.btn:hover {
+  text-decoration: underline;
+  font-weight: 900;
+}
+
+.leftbox{
+  float: left;
+  width: 20%;
+  height: 100%;
+}
+ .leftbox, .profile-picture {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+.profile-picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+}
+
+
